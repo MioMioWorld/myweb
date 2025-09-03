@@ -85,6 +85,12 @@ function loadCart() {
   }
 
   if (cartWidget) cartWidget.innerHTML = html;
+
+  let totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  let basketIcon = document.querySelector(".icon-shopping-basket");
+  if (basketIcon) {
+    basketIcon.setAttribute("data-icon-label", totalQuantity);
+  }
 }
 
 function removeItem(index) {
