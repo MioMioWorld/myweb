@@ -33,6 +33,7 @@ function addToCart(event) {
 function loadCart() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   let cartWidget = document.getElementsByClassName("widget_shopping_cart_content")[0];
+  let cartWidget2 = document.getElementsByClassName("widget_shopping_cart_content")[1];
 
   let html = "";
 
@@ -86,11 +87,16 @@ function loadCart() {
   }
 
   if (cartWidget) cartWidget.innerHTML = html;
+  if (cartWidget2) cartWidget2.innerHTML = html;
 
   let totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-  let basketIcon = document.querySelector(".icon-shopping-basket");
+  let basketIcon = document.querySelectorAll(".icon-shopping-basket")[0];
+  let basketIcon2 = document.querySelectorAll(".icon-shopping-basket")[1];
   if (basketIcon) {
     basketIcon.setAttribute("data-icon-label", totalQuantity);
+  }
+  if (basketIcon2) {
+    basketIcon2.setAttribute("data-icon-label", totalQuantity);
   }
 }
 
